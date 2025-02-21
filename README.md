@@ -24,14 +24,14 @@ This interactive audio-driven trivia game enhances learning by using voice and s
 
 ![Team Photo](media/team-photo.png)
 
- -- Jannathul Firdhouse T (TL --developer)...
- -- Sushma V (ATL--Developer)...
- --Monisha K(creator)...
- --Thareja sri G D(Developer)...
- --Annapoorani S(creator)...
- --Sudharsana K(creator)...
+ -- Jannathul Firdhouse T (TL --developer).
+ -- Sushma V (ATL--Developer).
+ --Monisha K(creator).
+ --Thareja sri G D(Developer).
+ --Annapoorani S(creator).
+ --Sudharsana K(creator).
 
-## Technical Stack
+# Technical Stack
 
 --*Front end*--python -- programming languages
 
