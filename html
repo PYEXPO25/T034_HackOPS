@@ -1,1 +1,109 @@
-#frontend
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .question {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        .score {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trivia Game</h1>
+        <div id="category-selection">
+            <button onclick="startGame('general knowledge')">General Knowledge</button>
+            <button onclick="startGame('science')">Science</button>
+        </div>
+        <div id="game" style="display: none;">
+            <div class="question" id="question"></div>
+            <input type="text" id="answer" placeholder="Your answer...">
+            <button onclick="submitAnswer()">Submit</button>
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="score">Streak: <span id="streak">0</span></div>
+        </div>
+    </div>
+
+    <script>
+        function startGame(category) {
+            document.getElementById('category-selection').style.display = 'none';
+            document.getElementById('game').style.display = 'block';
+
+            fetch('/start_game', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ category: category }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('question').innerText = data.question;
+                document.getElementById('score').innerText = data.score;
+                document.getElementById('streak').innerText = data.streak;
+            });
+        }
+
+        function submitAnswer() {
+            const answer = document.getElementById('answer').value;
+            fetch('/check_answer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ answer: answer }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('question').innerText = data.question || "Game Over!";
+                document.getElementById('score').innerText = data.score;
+                document.getElementById('streak').innerText = data.streak;
+                document.getElementById('answer').value = '';
+            });
+        }
+    </script>
+</body>
+</html>
