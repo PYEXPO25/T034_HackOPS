@@ -24,25 +24,25 @@ This interactive audio-driven trivia game enhances learning by using voice and s
 
 ![Team Photo](media/team-photo.png)
 
- -- Jannathul Firdhouse T (TL --developer)
- -- Sushma V (ATL--Developer)
- --Monisha K(creator)
- --Thareja sri G D(Developer)
- --Annapoorani S(creator)
- --Sudharsana K(creator)
+ -- Jannathul Firdhouse T (TL --developer)...
+ -- Sushma V (ATL--Developer)...
+ --Monisha K(creator)...
+ --Thareja sri G D(Developer)...
+ --Annapoorani S(creator)...
+ --Sudharsana K(creator)...
 
 ## Technical Stack
 
 --*Front end*--python -- programming languages
 
---SpeechRecognition – Processes voice input for answering questions.
+--*SpeechRecognition* – Processes voice input for answering questions.
  
---pyttsx3 – Converts text to speech for accessibility.
+--*pyttsx3* – Converts text to speech for accessibility.
  
---Pandas & NumPy – Manage and process trivia data.
+--*Pandas & NumPy* – Manage and process trivia data.
  
---JSON/CSV – Store and retrieve questions and answers efficiently.
---Pygame – Handles audio playback for questions and feedback.
+--*JSON/CSV* – Store and retrieve questions and answers efficiently.
+--*Pygame* – Handles audio playback for questions and feedback.
  
 ![image](https://github.com/user-attachments/assets/3c928f6f-05fe-434e-bdf1-e77140556d97)
 
