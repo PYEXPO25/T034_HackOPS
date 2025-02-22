@@ -128,10 +128,11 @@ Images to demonstrate the user interface:
 ## Resources
 
 ### 📄 PowerPoint Presentation
+[T034_HackOps.. (2).pdf](https://github.com/user-attachments/files/18921964/T034_HackOps.2.pdf)
 
 
 ### 🎥 Project Video
-[Click here to view the project demo video](insert-drive-link-here)
+
 
 ### 📹 YouTube Link
 [Watch the project on YouTube](insert-youtube-link-here)
