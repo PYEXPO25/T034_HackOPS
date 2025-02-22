@@ -1,4 +1,5 @@
-![PyExpo Logo](media/pyexpo-logo.png)
+![image](https://github.com/user-attachments/assets/e6b15b39-7c40-4623-95b6-d2205bab6dfb)
+
 
 --- 
 ## We're the team HackOps🎏
