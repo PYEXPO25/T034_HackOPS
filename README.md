@@ -34,7 +34,7 @@ This interactive audio-driven trivia game enhances learning by using voice and s
  --Sudharsana K(creator).
 
 # Technical Stack
-## Front end
+###FrontEnd and BackEnd and others
 python -- programming languages
 
 SpeechRecognition – Processes voice input for answering questions.
