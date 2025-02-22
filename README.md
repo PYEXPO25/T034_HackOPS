@@ -1,13 +1,13 @@
 ![PyExpo Logo](media/pyexpo-logo.png)
 
----
+--- 
 ## We're the team HackOps🎏
 
 ## Our Problem Statement.
 
 ## Problem Statement ID – PY029!!
 
- A quiz game that relies entirely on audio for both questions and feedback. This game is ideal for visually impaired players. Questions are read aloud, and players respond using voice commands or a simple keyboard interface. Categories include general knowledge, history, and science. Feedback and correct answers are spoken,  for challenging questions.
+ A quiz game that relies entirely on audio for both questions and feedback. This game is idea l for visually impaired players. Questions are read aloud, and players respond using voice commands or a simple keyboard interface. Categories include general knowledge, history, and science. Feedback and correct answers are spoken,  for challenging questions.
 
 ## Overview
 This interactive audio-driven trivia game enhances learning by using voice and sound for questions and answers, supporting multiple input methods . It improves listening skills, adapts to various educational topics, and incorporates features like timers, scoring, and speech recognition for an engaging experience.
