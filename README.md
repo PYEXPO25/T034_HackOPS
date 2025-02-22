@@ -128,7 +128,7 @@ Images to demonstrate the user interface:
 ## Resources
 
 ### 📄 PowerPoint Presentation
-[Click here to view the PPT](insert-drive-link-here)
+"C:\Users\USER\Downloads\T034_HackOps.. (2).pdf"
 
 ### 🎥 Project Video
 [Click here to view the project demo video](insert-drive-link-here)
