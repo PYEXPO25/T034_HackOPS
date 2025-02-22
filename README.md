@@ -42,6 +42,7 @@ pyttsx3 – Converts text to speech for accessibility.
 Pandas & NumPy – Manage and process trivia data.
  
 JSON/CSV– Store and retrieve questions and answers efficiently.
+
 Pygame – Handles audio playback for questions and feedback.
  
 ![image](https://github.com/user-attachments/assets/3c928f6f-05fe-434e-bdf1-e77140556d97)
