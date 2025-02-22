@@ -43,10 +43,6 @@ pyttsx3: A text-to-speech engine that converts the game's text-based responses i
 FuzzyWuzzy: A tool for comparing the user’s answer with the correct one, calculating the similarity in a way that adjusts for minor differences in phrasing.
 Google Generative AI: Used to generate dynamic questions based on the user’s educational board and subject.
 
-![image](https://github.com/user-attachments/assets/3c928f6f-05fe-434e-bdf1-e77140556d97)
-
- 
-![image](https://github.com/user-attachments/assets/0be0fc7b-630b-41ef-82ce-e05f9e898ccc)
 
 ## Getting Started
 
