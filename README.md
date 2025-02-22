@@ -35,12 +35,14 @@ This interactive audio-driven trivia game enhances learning by using voice and s
  --Sudharsana K(creator).
 
 # Technical Stack
+
 ###FrontEnd and BackEnd and others
 python -- programming languages
 SpeechRecognition: A library that processes voice input, allowing visually impaired users to answer questions without needing to read or type.
 pyttsx3: A text-to-speech engine that converts the game's text-based responses into spoken words, ensuring accessibility.
 FuzzyWuzzy: A tool for comparing the user’s answer with the correct one, calculating the similarity in a way that adjusts for minor differences in phrasing.
 Google Generative AI: Used to generate dynamic questions based on the user’s educational board and subject.
+
 ![image](https://github.com/user-attachments/assets/3c928f6f-05fe-434e-bdf1-e77140556d97)
 
  
