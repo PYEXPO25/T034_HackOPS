@@ -3,165 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivia Game</title>
+    <title>Audio-Driven Trivia Game</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: #fff;
+            font-family: "Georgia", serif;
+            text-align: center;
+            background: #f3e8e1;
+            color: #5c4a3d;
         }
         .container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            text-align: center;
-            width: 400px;
-            animation: fadeIn 1s ease-in-out;
+            margin-top: 50px;
+            background: #fffaf3;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            border: 2px solid #c4a484;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
-            border-radius: 5px;
-            background: #ff6f61;
-            color: white;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        button:hover {
-            background: #ff3b2f;
-        }
-        .question {
-            font-size: 1.5em;
-            margin: 20px 0;
-            font-weight: bold;
-        }
-        input[type="text"] {
+        input, button, select {
+            display: block;
+            margin: 10px auto;
             padding: 10px;
             width: 80%;
-            margin: 10px 0;
+            border: 1px solid #c4a484;
+            border-radius: 5px;
+            font-family: "Georgia", serif;
+            background: #fffaf3;
+            color: #5c4a3d;
+        }
+        button {
+            cursor: pointer;
+            background: #c4a484;
+            color: white;
             border: none;
-            border-radius: 5px;
-            font-size: 1em;
         }
-        .score {
-            font-size: 1.2em;
-            margin: 10px 0;
+        button:hover {
+            background: #a07450;
         }
-        .streak {
-            font-size: 1.2em;
-            margin: 10px 0;
-            color: #ffd700;
-        }
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-        .progress {
-            height: 100%;
-            background: #ff6f61;
-            width: 0;
-            transition: width 0.5s ease;
-        }
-        .feedback {
-            font-size: 1.2em;
-            margin: 10px 0;
-            animation: pop 0.5s ease;
-        }
-        @keyframes pop {
-            0% { transform: scale(0.8); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        .listening {
+            background-color: red;
+            color: white;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Trivia Game</h1>
-        <div id="category-selection">
-            <button onclick="startGame('general knowledge')">General Knowledge</button>
-            <button onclick="startGame('science')">Science</button>
-        </div>
-        <div id="game" style="display: none;">
-            <div class="question" id="question"></div>
-            <input type="text" id="answer" placeholder="Your answer...">
-            <button onclick="submitAnswer()">Submit</button>
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
-            </div>
-            <div class="score">Score: <span id="score">0</span></div>
-            <div class="streak">Streak: <span id="streak">0</span></div>
-            <div class="feedback" id="feedback"></div>
-        </div>
+        <h2 id="formTitle">Whispering Woods: Login or Sign Up</h2>
+        <input type="text" id="username" placeholder="Username" required readonly>
+        <input type="password" id="password" placeholder="Password" required readonly>
+        <button onclick="startProcess()">🎤 Begin Voice Login</button>
+        <p id="status"></p>
+    </div>
+
+    <div class="container" id="gameSetup" style="display: none;">
+        <h1>Welcome to the Trivia Meadow</h1>
+        <p id="welcomeMessage"></p>
+        
+        <label>Choose Board:</label>
+        <select id="board">
+            <option value="CBSE">CBSE</option>
+            <option value="ICSE">ICSE</option>
+            <option value="State">State</option>
+        </select>
+        <br>
+
+        <label>Choose Subject:</label>
+        <select id="subject">
+            <option value="Science">Science</option>
+            <option value="Math">Math</option>
+            <option value="History">History</option>
+            <option value="English">English</option>
+        </select>
+        <br>
+
+        <button id="startBtn">Start Game</button>
+        <button id="logoutBtn" onclick="logout()">Sign Out</button>
     </div>
 
     <script>
-        let totalQuestions = 0;
-
-        function startGame(category) {
-            document.getElementById('category-selection').style.display = 'none';
-            document.getElementById('game').style.display = 'block';
-
-            fetch('/start_game', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ category: category }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                totalQuestions = data.message ? data.message.split('/')[1] : 0;
-                updateUI(data);
-            });
-        }
-
-        function submitAnswer() {
-            const answer = document.getElementById('answer').value;
-            fetch('/check_answer', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ answer: answer }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                updateUI(data);
-                if (data.message) {
-                    document.getElementById('feedback').innerText = data.message;
+        function startProcess() {
+            speak("Would you like to log in or sign up?");
+            startVoiceInput((response) => {
+                if (response.includes("sign up")) {
+                    speak("You chose sign up. Say your username.");
+                    askForUsername(false);
+                } else if (response.includes("log in")) {
+                    speak("You chose log in. Say your username.");
+                    askForUsername(true);
                 } else {
-                    document.getElementById('feedback').innerText = data.correct ? "Correct! 🎉" : "Wrong! 😢";
+                    speak("I didn't catch that. Please say log in or sign up.");
+                    startProcess();
                 }
-                document.getElementById('answer').value = '';
             });
         }
 
-        function updateUI(data) {
-            document.getElementById('question').innerText = data.question || "Game Over!";
-            document.getElementById('score').innerText = data.score;
-            document.getElementById('streak').innerText = data.streak;
-            document.getElementById('progress').style.width = `${(data.score / totalQuestions) * 100}%`;
+        function askForUsername(isLogin) {
+            startVoiceInput((username) => {
+                document.getElementById("username").value = username;
+                speak("Now say your password.");
+                askForPassword(isLogin);
+            });
+        }
+
+        function askForPassword(isLogin) {
+            startVoiceInput((password) => {
+                document.getElementById("password").value = password;
+                speak("Processing...");
+                isLogin ? login() : signup();
+            });
+        }
+
+        function login() {
+            showGameSetup();
+        }
+
+        function signup() {
+            showGameSetup();
+        }
+
+        function showGameSetup() {
+            document.querySelector(".container").style.display = "none";
+            document.getElementById("gameSetup").style.display = "block";
+            speak("Welcome! Ready to pick your adventure?");
+        }
+
+        function logout() {
+            speak("You have been logged out.");
+            location.reload();
+        }
+
+        function speak(text) {
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = "en-US";
+            window.speechSynthesis.speak(speech);
+        }
+
+        function startVoiceInput(callback) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-US";
+            recognition.continuous = false;
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript.toLowerCase();
+                callback(transcript);
+            };
         }
     </script>
 </body>
