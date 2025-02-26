@@ -24,7 +24,7 @@ This interactive audio-driven trivia game enhances learning by using voice and s
 
 ## colleagues🤓
 
-![WhatsApp Image 2025-02-19 at 9 01 57 PM](https://github.com/user-attachments/assets/ff6d6ef8-305f-47bc-b7f8-a46c241e8731)
+https://drive.google.com/file/d/1_V1Kdo2qwz9fv90lUvYDSYyovTtE6gE8/view?usp=sharing
 
 
  -- Jannathul Firdhouse T (TL --developer).
